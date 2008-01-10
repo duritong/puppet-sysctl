@@ -4,7 +4,7 @@
 
 modules_dir { "sysctl": }
 
-class systctl {
+class sysctl {
 
 }
 
