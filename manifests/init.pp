@@ -17,7 +17,7 @@ define sysctl::set_value(
  		refreshonly => true,
  	}
  
- 	Sysctl { "${name}":
+ 	sysctl { $name:
  		val => $value,
  		notify => Exec["exec_sysctl_${name}"],
  	}
