@@ -18,7 +18,7 @@ define sysctl::set_value(
  	}
 
  	sysctl { $name:
- 		wert => "$value",
+ 		val => "$value",
  		notify => Exec["exec_sysctl_${name}"],
  	}
 }
