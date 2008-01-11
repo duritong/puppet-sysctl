@@ -16,7 +16,7 @@ define sysctl::set_value(
  		command => "/sbin/sysctl ${name}=${value}",
  		refreshonly => true,
  	}
- 
+
  	sysctl { $name:
  		val => "$value",
  		notify => Exec["exec_sysctl_${name}"],
