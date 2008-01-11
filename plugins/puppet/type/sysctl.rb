@@ -25,7 +25,7 @@ module Puppet
             isnamevar
         end
         
-        newproperty(:val) do
+        newproperty(:wert) do
             desc "Value the parameter should be set to"
         end
 
