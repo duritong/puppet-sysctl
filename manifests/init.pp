@@ -2,7 +2,7 @@
 # Copyright (C) 2008 admin@immerda.ch
 # See LICENSE for the full license granted to you.
 
-modules_dir { "sysctl": }
+#modules_dir { "sysctl": }
 
 class sysctl {
 
