@@ -1,13 +1,3 @@
-# sysctl/manifests/init.pp - Define sysctl module stuff
-# Copyright (C) 2008 admin@immerda.ch
-# See LICENSE for the full license granted to you.
-
-#modules_dir { "sysctl": }
-
-class sysctl {
-
-}
-
 define sysctl::set_value(
 	$value
 ){
@@ -22,5 +12,3 @@ define sysctl::set_value(
  		notify => Exec["exec_sysctl_${name}"],
  	}
 }
-
-
