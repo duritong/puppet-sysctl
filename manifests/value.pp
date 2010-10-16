@@ -1,4 +1,4 @@
-define sysctl::set_value(
+define sysctl::value(
 	$value
 ){
 
