@@ -3,7 +3,7 @@ define sysctl::value(
 ){
 
  	exec { "exec_sysctl_${name}":
- 		command => "/sbin/sysctl ${name}=${value}",
+ 		command => "/sbin/sysctl ${name}=\"${value}\"",
  		refreshonly => true,
  	}
 
