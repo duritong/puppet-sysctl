@@ -19,8 +19,8 @@ define sysctl::value (
         default => "sysctl -w ${real_key}=\"${value}\""
       },
       unless => $::kernel ? {
-        openbsd => "sysctl ${real_key} | grep -q '=${value}'",
-        default => "sysctl ${real_key} | grep -q ' = ${value}'"
+        openbsd => "sysctl ${real_key} | grep -q '=${value}\$'",
+        default => "sysctl ${real_key} | grep -q ' = ${value}\$'"
       },
       require => Sysctl[$real_key],
   }
