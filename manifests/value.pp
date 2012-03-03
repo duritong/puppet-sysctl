@@ -14,6 +14,7 @@ define sysctl::value (
   }
   exec {
     "exec_sysctl_${real_key}" :
+      path    => "/sbin:/bin:/usr/bin",
       command => $::kernel ? {
         openbsd => "sysctl ${real_key}=\"${value}\"",
         default => "sysctl -w ${real_key}=\"${value}\""
