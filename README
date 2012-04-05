@@ -15,7 +15,7 @@ This modules allows to configure sysctl.
   
   node "mynode" inherits ... {
     sysctl::value { 'net.ipv4.tcp_rmem':
-        value => '4096 131072 131072',
+        value => "4096\t131072\t131072",
     }
   }
 
