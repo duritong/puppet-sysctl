@@ -10,6 +10,15 @@ This modules allows to configure sysctl.
     sysctl::value { "vm.nr_hugepages": value => "1583"}
   }
 
+  When setting a key that contains multiple values, use a tab to separate the
+  values:
+  
+  node "mynode" inherits ... {
+    sysctl::value { 'net.ipv4.tcp_rmem':
+        value => '4096 131072 131072',
+    }
+  }
+
   It is preferred that you set your exec path globally. This is usually done
   in site.pp and would look something like this (adjust for your environment):
 

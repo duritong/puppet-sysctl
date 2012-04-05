@@ -20,7 +20,7 @@ define sysctl::value (
 
   $unless = $::kernel ? {
     openbsd => "sysctl ${real_key} | grep -q '=${value}'",
-    default => "sysctl ${real_key} | grep -q ' = ${value}'",
+    default => "sysctl -a ${real_key} | grep -q ' = ${value}'",
   }
 
   exec { "exec_sysctl_${real_key}" :
