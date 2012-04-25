@@ -1,6 +1,6 @@
 define sysctl::value (
   $value,
-  $key = 'name',
+  $key = 'name'
 ) {
 
   $array = split($value,'[\s\t]')
