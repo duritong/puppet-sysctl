@@ -19,6 +19,22 @@ This modules allows to configure sysctl.
     }
   }
 
+  To avoid duplication the sysctl::value calls multiple settings can be 
+  managed like this:
+
+  $my_sysctl_settings = {
+    "net.ipv4.ip_forward          => { value => 1 },
+    "net.ipv6.conf.all.forwarding => { value => 1 },
+  }
+
+  # Specify defaults for all the sysctl::value to be created (
+  $my_sysctl_defaults = {
+    require => Package['aa']
+  }
+
+  create_resources(sysctl::value,$my_sysctl_settings,$my_sysctl_defaults)
+
+  The sysctl binary needs to be found in your Path.
   It is preferred that you set your exec path globally. This is usually done
   in site.pp and would look something like this (adjust for your environment):
 
