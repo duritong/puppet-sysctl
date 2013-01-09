@@ -23,8 +23,8 @@ This modules allows to configure sysctl.
   managed like this:
 
   $my_sysctl_settings = {
-    "net.ipv4.ip_forward          => { value => 1 },
-    "net.ipv6.conf.all.forwarding => { value => 1 },
+    "net.ipv4.ip_forward"          => { value => 1 },
+    "net.ipv6.conf.all.forwarding" => { value => 1 },
   }
 
   # Specify defaults for all the sysctl::value to be created (
