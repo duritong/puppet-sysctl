@@ -40,7 +40,7 @@ This modules allows to configure sysctl.
 
   # Set a site-wide global path so we don't have to explicitly specify a path
   # for each exec.
-  Exec { path => '/usr/bin:/usr/sbin/:/bin:/sbin' }
+  Exec { path => '/usr/bin:/usr/sbin:/bin:/sbin' }
 
 = License
 
