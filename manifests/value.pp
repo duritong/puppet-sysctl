@@ -1,10 +1,16 @@
 define sysctl::value (
   $value,
-  $key = 'name'
+  $key = 'name',
+  $suppress = false
 ) {
 
   $array = split($value,'[\s\t]')
   $val1 = inline_template("<%= array.delete_if(&:empty?).flatten.join(\"\t\") %>")
+
+  $suppress_flag = $suppress ? {
+    true    => '-e',
+    false   => '',
+  }
 
   $real_key = $key ? {
     'name'  => $name,
@@ -18,7 +24,7 @@ define sysctl::value (
 
   $command = $::kernel ? {
     openbsd => "sysctl ${real_key}=\"${val1}\"",
-    default => "sysctl -w ${real_key}=\"${val1}\"",
+    default => "sysctl ${suppress_flag} -w ${real_key}=\"${val1}\"",
   }
 
   $unless = $::kernel ? {
