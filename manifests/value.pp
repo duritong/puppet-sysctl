@@ -35,5 +35,6 @@ define sysctl::value (
       command => $command,
       unless  => $unless,
       require => Sysctl[$key],
+      path    => ['/sbin', '/usr/sbin', '/bin', '/usr/bin'],
   }
 }
