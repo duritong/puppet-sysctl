@@ -45,6 +45,8 @@ in site.pp and would look something like this (adjust for your environment):
     # for each exec.
     Exec { path => '/usr/bin:/usr/sbin:/bin:/sbin' }
 
+Or you can also set that path within hiera for `sysctl::params::exec_path`.
+
 License
 -------
 
