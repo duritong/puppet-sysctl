@@ -1,6 +1,11 @@
+# Manage sysctl value
+#
+# It not only manages the entry within
+# /etc/sysctl.conf, but also checks the
+# current active version.
 define sysctl::value (
   $value,
-  $key = $name
+  $key    = $name,
 ) {
 
   $array = split($value,'[\s\t]')
