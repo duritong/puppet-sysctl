@@ -8,21 +8,21 @@ This modules allows to configure sysctl.
 
 Usage
 -----
-  
+
     node "mynode" inherits ... {
       sysctl::value { "vm.nr_hugepages": value => "1583"}
     }
 
 When setting a key that contains multiple values, use a tab to separate the
 values:
-  
+
     node "mynode" inherits ... {
       sysctl::value { 'net.ipv4.tcp_rmem':
           value => "4096\t131072\t131072",
       }
     }
 
-To avoid duplication the sysctl::value calls multiple settings can be 
+To avoid duplication the sysctl::value calls multiple settings can be
 managed like this:
 
     $my_sysctl_settings = {
@@ -50,7 +50,7 @@ Or you can also set that path within hiera for `sysctl::params::exec_path`.
 License
 -------
 
-Copyright (C) 2011 Immerda Project Group  
-Author mh <mh@immerda.ch>  
-Modified by Nicolas Zin <nicolas.zin@savoirfairelinux.com>  
-Licence: GPL v2  
+Copyright (C) 2011 Immerda Project Group
+Author mh <mh@immerda.ch>
+Modified by Nicolas Zin <nicolas.zin@savoirfairelinux.com>
+Licence: GPL v2
