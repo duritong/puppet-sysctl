@@ -36,4 +36,11 @@ define sysctl::value (
       unless  => $unless,
       require => Sysctl[$key],
   }
+
+  include sysctl::params
+  if $sysctl::params::exec_path {
+    Exec["exec_sysctl_${key}"]{
+      path => $sysctl::params::exec_path
+    }
+  }
 }
