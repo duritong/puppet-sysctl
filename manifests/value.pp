@@ -9,7 +9,7 @@ define sysctl::value (
 ) {
 
   $array = split($value,'[\s\t]')
-  $val1 = inline_template("<%= @array.delete_if(&:empty?).flatten.join(\"\t\") %>")
+  $val1 = inline_template("<%= @array.reject(&:empty?).flatten.join(\"\t\") %>")
 
   sysctl { $key :
     val => $val1,
