@@ -16,15 +16,8 @@ define sysctl::value (
   }
 
   $command = $::kernel ? {
-    openbsd => shellquote(
-      'sysctl',
-      "${key}=${val1}"
-    ),
-    default => shellquote(
-      'sysctl',
-      '-w',
-      "${key}=${val1}"
-    ),
+    /i?BSD$/ => shellquote('sysctl',     "${key}=${val1}"),
+    default  => shellquote('sysctl','-w',"${key}=${val1}"),
   }
 
   $current_value = shellquote(
