@@ -1,6 +1,8 @@
 Requirements
 ============
 
+[![Build Status](https://travis-ci.org/duritong/puppet-sysctl.png?branch=master)](https://travis-ci.org/duritong/puppet-sysctl)
+
 Overview
 --------
 
