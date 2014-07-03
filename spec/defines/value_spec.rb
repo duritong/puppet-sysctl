@@ -32,12 +32,12 @@ describe 'sysctl::value' do
       # OS-specific traits.
       case f[:kernel]
       when 'Linux' then
-        it { should contain_exec('exec_sysctl_rspec_test').with_command(
-          "sysctl -w \"rspec_test=foo\tbar\tbaz\""
+        it { should contain_exec('apply_sysctl').with_command(
+          "sysctl -p"
         ) }
       when /BSD$/ then
-        it { should contain_exec('exec_sysctl_rspec_test').with_command(
-          "sysctl \"rspec_test=foo\tbar\tbaz\""
+        it { should contain_exec('apply_sysctl').with_command(
+          "sysctl -f /etc/sysctl.conf"
         ) }
       end
     end
