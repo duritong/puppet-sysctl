@@ -24,6 +24,15 @@ values:
       }
     }
 
+If another config file then /etc/sysctl.conf (default) is required, use target for this:
+
+    node "mynode" inherits ... {
+      sysctl::value { 'net.ipv4.tcp_rmem':
+          value => "4096\t131072\t131072",
+          target => '/etc/sysctl.d/mysysctl.conf',
+      }
+    }
+
 To avoid duplication the sysctl::value calls multiple settings can be
 managed like this:
 
