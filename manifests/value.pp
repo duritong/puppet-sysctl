@@ -6,6 +6,7 @@
 define sysctl::value (
   $value,
   $key    = $name,
+  $target = undef,
 ) {
 
   $array = split($value,'[\s\t]')
@@ -16,6 +17,7 @@ define sysctl::value (
   sysctl { $key :
     val => $val1,
     notify => Exec['apply_sysctl'],
+    target => $target,
   }
 
 }
