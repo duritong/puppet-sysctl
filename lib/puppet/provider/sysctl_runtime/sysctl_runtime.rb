@@ -20,7 +20,7 @@ Puppet::Type.type(:sysctl_runtime).provide(:sysctl_runtime,
       name, val = line.split(' = ')
       new( 
         :name => name,
-        :val  => val,
+        :val  => val
       )
     end
   end
