@@ -1,5 +1,5 @@
 Puppet::Type.type(:sysctl_runtime).provide(:sysctl_runtime,
-                                    :parent => Puppet::Provider,
+                                    :parent => Puppet::Provider
                                    ) do
   desc "This provider changes the runtime values of kernel parameters"
 
