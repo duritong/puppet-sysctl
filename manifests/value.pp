@@ -7,12 +7,14 @@ define sysctl::value (
   $value,
   $key    = $name,
 ) {
+  include sysctl::params
 
   $array = split($value,'[\s\t]')
   $val1 = inline_template("<%= @array.reject(&:empty?).flatten.join(\"\t\") %>")
 
   sysctl { $key :
-    val => $val1,
+    val     => $val1,
+    require => File['/etc/sysctl.conf'],
   }
 
   $command = $::kernel ? {
@@ -35,7 +37,6 @@ define sysctl::value (
       require => Sysctl[$key],
   }
 
-  include sysctl::params
   if $sysctl::params::exec_path {
     Exec["exec_sysctl_${key}"]{
       path => $sysctl::params::exec_path
