@@ -6,4 +6,11 @@
 #               don't want to set a global exec default.
 class sysctl::params(
   $exec_path = undef,
-) { }
+) {
+  file { '/etc/sysctl.conf':
+    ensure      => 'present',
+    owner       => 'root',
+    group       => '0',
+    mode        => '0644',
+  }
+}
