@@ -3,16 +3,7 @@ Puppet::Type.type(:sysctl_runtime).provide(:sysctl_runtime,
                                    ) do
   desc "This provider changes the runtime values of kernel parameters"
 
-  [ "/sbin/sysctl",
-  "/bin/sysctl",
-  "/usr/sbin/sysctl",
-  "/usr/bin/sysctl"].each do |sysctl_command|
-    if File.exists?(sysctl_command)
-      commands :sysctl => sysctl_command
-      @sysctl_exec_command = sysctl_command
-      break
-    end
-  end
+  commands :sysctl => 'sysctl'
 
   mk_resource_methods
 
@@ -22,14 +13,14 @@ Puppet::Type.type(:sysctl_runtime).provide(:sysctl_runtime,
     #Sysctl produces mixed output in case of error, 
     #and it can't be parsed.
     #https://ask.puppetlabs.com/question/6299/combine-false-for-provider-commands/
-    output = Puppet::Util.execute(@sysctl_exec_command+" -a", {
+    output = Puppet::Util.execute("#{Puppet::Util.which('sysctl')} -a", {
       :failonfail         => true,
       :combine            => false,
       :custom_environment => {}
     })
     output.split("\n").collect do |line|
       name, val = line.split(' = ')
-      new( 
+      new(
         :name => name,
         :val  => val
       )
