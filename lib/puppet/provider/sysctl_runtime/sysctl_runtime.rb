@@ -19,7 +19,9 @@ Puppet::Type.type(:sysctl_runtime).provide(:sysctl_runtime,
       :custom_environment => {}
     })
     output.split("\n").collect do |line|
-      name, val = line.split(' = ')
+      # lovely linux shows "fs.dir-notify-enable = 1"
+      # lovely openbsd shows "fs.dir-notify-enable=1"
+      name, val = line.split(/\s?=\s?/,2)
       new(
         :name => name,
         :val  => val
