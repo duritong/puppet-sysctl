@@ -8,9 +8,9 @@ Puppet::Type.type(:sysctl_runtime).provide(:sysctl_runtime,
   mk_resource_methods
 
   def self.instances
-    #we don't use here the sysctl command to be able 
-    #to disable combining of stderr/stdout output. 
-    #Sysctl produces mixed output in case of error, 
+    #we don't use here the sysctl command to be able
+    #to disable combining of stderr/stdout output.
+    #Sysctl produces mixed output in case of error,
     #and it can't be parsed.
     #https://ask.puppetlabs.com/question/6299/combine-false-for-provider-commands/
     output = Puppet::Util::Execution.execute("#{Puppet::Util.which('sysctl')} -a", {
@@ -22,11 +22,13 @@ Puppet::Type.type(:sysctl_runtime).provide(:sysctl_runtime,
       # lovely linux shows "fs.dir-notify-enable = 1"
       # lovely openbsd shows "fs.dir-notify-enable=1"
       name, val = line.split(/\s?=\s?/,2)
-      new(
-        :name => name,
-        :val  => val
-      )
-    end
+      if name && val # maybe the line didn't match key = val
+        new(
+          :name => name,
+          :val  => val
+        )
+      end
+    end.compact
   end
 
   def self.prefetch(resources)
