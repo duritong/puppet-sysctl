@@ -52,7 +52,7 @@ License
 -------
 
 Copyright (C) 2011 Immerda Project Group
-Author mh <mh@immerda.ch>
-Modified by Nicolas Zin <nicolas.zin@savoirfairelinux.com>
-Modified by Artem Sidorenko <artem@2realities.com>
+
+Author mh <mh@immerda.ch>, Modified by Nicolas Zin <nicolas.zin@savoirfairelinux.com>, Modified by Artem Sidorenko <artem@2realities.com>
+
 Licence: GPL v2
