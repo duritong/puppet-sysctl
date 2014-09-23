@@ -13,7 +13,8 @@ Puppet::Type.type(:sysctl_runtime).provide(:sysctl_runtime,
     #Sysctl produces mixed output in case of error,
     #and it can't be parsed.
     #https://ask.puppetlabs.com/question/6299/combine-false-for-provider-commands/
-    output = Puppet::Util::Execution.execute("#{Puppet::Util.which('sysctl')} -a", {
+    executor = (Facter.value(:puppetversion).to_i < 3) ? Puppet::Util : Puppet::Util::Execution
+    output = executor.execute("#{Puppet::Util.which('sysctl')} -a", {
       :failonfail         => true,
       :combine            => false,
       :custom_environment => {}
