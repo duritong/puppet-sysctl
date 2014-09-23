@@ -13,19 +13,12 @@ Puppet::Type.type(:sysctl_runtime).provide(:sysctl_runtime,
     #Sysctl produces mixed output in case of error,
     #and it can't be parsed.
     #https://ask.puppetlabs.com/question/6299/combine-false-for-provider-commands/
-    if Facter.value(:puppetversion).to_f < 3.0
-      output = Puppet::Util.execute("#{Puppet::Util.which('sysctl')} -a", {
-        :failonfail         => true,
-        :combine            => false,
-        :custom_environment => {}
-      })
-    else
-      output = Puppet::Util::Execution.execute("#{Puppet::Util.which('sysctl')} -a", {
-        :failonfail         => true,
-        :combine            => false,
-        :custom_environment => {}
-      })
-    end
+    executor = (Facter.value(:puppetversion).to_i < 3) ? Puppet::Util : Puppet::Util::Execution
+    output = executor.execute("#{Puppet::Util.which('sysctl')} -a", {
+      :failonfail         => true,
+      :combine            => false,
+      :custom_environment => {}
+    })
     output.split("\n").collect do |line|
       # lovely linux shows "fs.dir-notify-enable = 1"
       # lovely openbsd shows "fs.dir-notify-enable=1"
