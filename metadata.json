@@ -1,6 +1,6 @@
 {
   "name": "duritong-sysctl",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "author": "duritong",
   "summary": "This modules allows you to configure sysctl.",
   "license": "GPLv2",
@@ -9,6 +9,5 @@
   "issues_url": "https://github.com/duritong/puppet-sysctl/issues",
   "description": "This modules allows you to configure sysctl.",
   "dependencies": [
-  
   ]
 }
