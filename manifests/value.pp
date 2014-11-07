@@ -18,8 +18,8 @@ define sysctl::value (
   $val1 = inline_template("<%= @value.split(/[\s\t]/).reject(&:empty?).flatten.join(\"\t\") %>")
 
   sysctl { $key :
-    val     => $val1,
-    target  => $target,
+    val    => $val1,
+    target => $target,
   } -> sysctl_runtime { $key:
     val => $val1,
   }

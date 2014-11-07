@@ -1,14 +1,13 @@
 source 'https://rubygems.org'
 
-### Environment variable version overrrides
-### Gem requirements
-gem 'rake'
-gem 'rspec'
-gem 'facter'
-gem 'puppet', '>= 3.0.0'
-gem 'rspec-puppet'
-#gem 'simplecov'
+if ENV.key?('PUPPET_VERSION')
+  puppetversion = "~> #{ENV['PUPPET_VERSION']}"
+else
+  puppetversion = ['>= 3.7.3']
+end
+
+gem 'puppet', puppetversion
 gem 'puppet-lint'
 gem 'puppetlabs_spec_helper'
-gem 'git', '>= 1.2.6'
-gem "ci_reporter"
+gem 'rake'
+gem 'librarian-puppet'
