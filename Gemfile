@@ -10,4 +10,4 @@ gem 'puppet', puppetversion
 gem 'puppet-lint'
 gem 'puppetlabs_spec_helper'
 gem 'rake'
-gem 'librarian-puppet'
+#gem 'librarian-puppet'
