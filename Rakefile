@@ -18,6 +18,10 @@ end
 task :librarian_spec_prep do
 #  sh "librarian-puppet install --path=spec/fixtures/modules/"
   pwd = `pwd`.strip
+  # because we don't have librarian-puppet
+  unless File.directory?("#{pwd}/spec/fixtures/modules")
+    sh "mkdir -p #{pwd}/spec/fixtures/modules"
+  end
   unless File.directory?("#{pwd}/spec/fixtures/modules/sysctl")
     sh "ln -s #{pwd} #{pwd}/spec/fixtures/modules/sysctl"
   end
