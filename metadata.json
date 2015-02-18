@@ -1,6 +1,6 @@
 {
   "name": "duritong-sysctl",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "author": "duritong",
   "summary": "This modules allows you to configure sysctl.",
   "license": "GPLv2",
