@@ -22,7 +22,7 @@ Puppet::Type.type(:sysctl_runtime).provide(:sysctl_runtime,
     output.split("\n").collect do |line|
       # lovely linux shows "fs.dir-notify-enable = 1"
       # lovely openbsd shows "fs.dir-notify-enable=1"
-      name, val = line.split(/\s?=\s?/,2)
+      name, val = line.split(/\s?[=:]\s?/,2)
       if name && val # maybe the line didn't match key = val
         new(
           :name => name,
