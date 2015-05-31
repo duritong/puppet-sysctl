@@ -1,5 +1,4 @@
-module Puppet
-    newtype(:sysctl) do
+Puppet::Type.newtype(:sysctl) do
 
         @doc = "Manages kernel parameters in /etc/sysctl.conf.  By default this will
                 only edit the configuration file, and not change any of the runtime
@@ -39,5 +38,4 @@ module Puppet
                         end
             }
         end
-    end
 end
