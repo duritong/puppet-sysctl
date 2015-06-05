@@ -3,9 +3,12 @@ rvm:
   - 1.9.3
   - 2.0.0
   - 2.1.0
+  - 2.2.2
 script: 'bundle exec rake'
 env:
   - PUPPET_VERSION=2.7.25
+  - PUPPET_VERSION=3.8.1
+  - PUPPET_VERSION=4.0.0
   - PUPPET_VERSION=
 matrix:
   exclude:
@@ -14,3 +17,10 @@ matrix:
       env: PUPPET_VERSION=2.7.25
     - rvm: 2.1.0
       env: PUPPET_VERSION=2.7.25
+    - rvm: 2.2.2
+      env: PUPPET_VERSION=2.7.25
+    # no 1.8.7 support for puppet 4.0
+    - rvm: 1.8.7
+      env: PUPPET_VERSION=4.0.0
+    - rvm: 1.8.7
+      env: PUPPET_VERSION=
