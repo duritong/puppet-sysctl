@@ -20,7 +20,9 @@ define sysctl::value (
   sysctl { $key :
     val    => $val1,
     target => $target,
-  } -> sysctl_runtime { $key:
+    before => Sysctl_runtime[$key],
+  }
+  sysctl_runtime { $key:
     val => $val1,
   }
 }
