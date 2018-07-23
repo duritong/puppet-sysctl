@@ -48,6 +48,11 @@ managed like this:
     
     create_resources(sysctl::value,$my_sysctl_settings,$my_sysctl_defaults)
 
+Puppet 3 support
+----------------
+
+The 0.0.12 release will be the last version that supports Puppet 3 support.
+
 License
 -------
 
