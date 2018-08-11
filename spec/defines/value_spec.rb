@@ -1,6 +1,7 @@
 require 'spec_helper'
 
 describe 'sysctl::value' do
+
   let(:title) { 'rspec_test' }
 
   context 'with string value' do

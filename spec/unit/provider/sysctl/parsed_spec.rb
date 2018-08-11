@@ -1,7 +1,3 @@
-#
-# Author: Tobias Urdin <tobias.urdin@binero.se>
-#
-
 require 'puppet'
 require 'spec_helper'
 require 'puppet/provider/sysctl/parsed'

@@ -1,7 +1,3 @@
-#
-# Author: Tobias Urdin <tobias.urdin@binero.se>
-#
-
 require 'puppet'
 require 'puppet/type/sysctl'
 

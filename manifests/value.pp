@@ -1,14 +1,13 @@
-# Manage sysctl value
+# @summary
+#   Manage sysctl value in configuration file
+#   and runtime.
 #
-# It not only manages the entry within
-# /etc/sysctl.conf, but also checks the
-# current active version.
+# @example
+#   sysctl::value { 'vm.nr_hugepages': value => '1583' }
 #
-# Parameters
-#
-# * value: to set.
-# * key Key to set, default: $name
-# * target: an alternative target for your sysctl values.
+# @param value The string or integer value.
+# @param key The sysctl key to set, defaults to resource name.
+# @param target Optional configuration file target.
 define sysctl::value (
   $value,
   $key    = $name,

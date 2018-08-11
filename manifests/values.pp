@@ -1,18 +1,15 @@
+# @summary
+#   Manage multiple sysctl values.
 #
-# Author: Emilien Macchi <emilien@redhat.com>
+# @example
+#   $args = {
+#     'net.ipv4.ip_forward'          => { value => 1 },
+#     'net.ipv6.conf.all.forwarding' => { value => 1 },
+#   }
+#   sysctl::values
 #
-# == Class: sysctl::values
-#
-# Class wrapper to create sysctl values with Hiera.
-#
-# === Parameters:
-#
-# [*args*] A sysctl config hash
-#   Required.
-#
-# [*defaults*] A config hash
-#   Optional. Defaults to a empty hash
-#
+# @param args Hash with sysctl::value resources.
+# @param defaults Hash with sysctl::value resource default values.
 class sysctl::values($args, $defaults = {}) {
   create_resources(sysctl::value, $args, $defaults)
 }

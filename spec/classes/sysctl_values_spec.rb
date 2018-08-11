@@ -1,6 +1,3 @@
-#
-# Author: Emilien Macchi <emilien@redhat.com>
-#
 require 'spec_helper'
 
 describe 'sysctl::values' do
@@ -45,5 +42,4 @@ describe 'sysctl::values' do
 
     it_behaves_like 'sysctl::values'
   end
-
 end
