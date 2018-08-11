@@ -1,7 +1,6 @@
 require 'spec_helper'
 
 describe 'sysctl::value' do
-
   let(:title) { 'rspec_test' }
 
   shared_examples 'sysctl::value' do
@@ -21,7 +20,7 @@ describe 'sysctl::value' do
       }
     end
 
-    context 'with Fixnum value' do
+    context 'with integer value' do
       let(:params) do
         {
           :value => 1
@@ -35,6 +34,35 @@ describe 'sysctl::value' do
         )
         should contain_sysctl_runtime('rspec_test').with_val('1')
       }
+    end
+
+    context 'with custom target' do
+      let(:params) do
+        {
+          :value  => 1,
+          :target => '/etc/sysctl.d/custom.conf'
+        }
+      end
+
+      it {
+        should contain_sysctl('rspec_test').with(
+          :val    => '1',
+          :target => '/etc/sysctl.d/custom.conf',
+          :before => 'Sysctl_runtime[rspec_test]'
+        )
+        should contain_sysctl_runtime('rspec_test').with_val('1')
+      }
+    end
+
+    context 'with invalid custom target' do
+      let(:params) do
+        {
+          :value  => 1,
+          :target => 'file.conf'
+        }
+      end
+
+      it { should raise_error(Puppet::Error, /expects a match for Sysctl::Unixpath/) }
     end
   end
 

@@ -1,7 +1,6 @@
 require 'spec_helper'
 
 describe 'sysctl::values' do
-
   shared_examples 'sysctl::values' do
     let :params do
       {

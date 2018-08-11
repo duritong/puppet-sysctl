@@ -10,6 +10,12 @@
 #
 # @param args Hash with sysctl::value resources.
 # @param defaults Hash with sysctl::value resource default values.
-class sysctl::values($args, $defaults = {}) {
+#
+# @api public
+class sysctl::values(
+  Hash $args,
+  Hash $defaults = {},
+) {
+
   create_resources(sysctl::value, $args, $defaults)
 }

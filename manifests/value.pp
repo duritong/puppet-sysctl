@@ -5,14 +5,17 @@
 # @example
 #   sysctl::value { 'vm.nr_hugepages': value => '1583' }
 #
-# @param value The string or integer value.
-# @param key The sysctl key to set, defaults to resource name.
-# @param target Optional configuration file target.
+# @param value String or Integer value.
+# @param key String with sysctl key to set, defaults to resource name.
+# @param target Optional absolute path to configuration file.
+#
+# @api public
 define sysctl::value (
-  $value,
-  $key    = $name,
-  $target = undef,
+  Variant[String, Integer] $value,
+  String $key                        = $name,
+  Optional[Sysctl::Unixpath] $target = undef,
 ) {
+
   require sysctl::base
   $val1 = inline_template("<%= String(@value).split(/[\s\t]/).reject(&:empty?).flatten.join(\"\t\") %>")
 
