@@ -1,10 +1,6 @@
-#
-# Author: Emilien Macchi <emilien@redhat.com>
-#
 require 'spec_helper'
 
 describe 'sysctl::values' do
-
   shared_examples 'sysctl::values' do
     let :params do
       {
@@ -25,25 +21,11 @@ describe 'sysctl::values' do
     }
   end
 
-  describe 'sysctl::values on Debian' do
-    let :facts do
-      {
-        :osfamily => 'Debian',
-      }
+  on_supported_os({
+    :supported_os => SUPPORTED_OS
+  }).each do |os, facts|
+    context "on #{os}" do
+      it_behaves_like 'sysctl::values'
     end
-
-    it_behaves_like 'sysctl::values'
   end
-
-
-  describe 'sysctl::values on RedHat' do
-    let :facts do
-      {
-        :osfamily => 'RedHat',
-      }
-    end
-
-    it_behaves_like 'sysctl::values'
-  end
-
 end
