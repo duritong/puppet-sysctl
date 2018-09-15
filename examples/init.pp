@@ -23,5 +23,5 @@ $my_sysctl_settings = {
 create_resources(sysctl::value, $my_sysctl_settings, {})
 
 sysctl::values { 'multiple':
-  args     => $my_sysctl_settings,
+  args => $my_sysctl_settings,
 }
