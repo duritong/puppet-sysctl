@@ -34,7 +34,8 @@ sets the configuration in /etc/sysctl.conf by can be customized with the `target
 ```puppet
 sysctl::value { 'vm.nr_hugepages':
   value => '1583'
-}```
+}
+```
 
 ## Usage
 
@@ -45,7 +46,8 @@ The basic usage by setting the configuration file and runtime value.
 ```puppet
 sysctl::value { 'vm.nr_hugepages':
   value => '1583'
-}```
+}
+```
 
 ### Multiple tab-separated values
 
@@ -54,7 +56,8 @@ When setting a key that contains multiple values, use a tab to separate the valu
 ```puppet
 sysctl::value { 'net.ipv4.tcp_rmem':
   value => "4096\t131072\t131072",
-}```
+}
+```
 
 ### Custom target file
 
@@ -64,7 +67,8 @@ If another config file then the default /etc/sysctl.conf is required.
 sysctl::value { 'vm.nr_hugepages':
   value  => '1583',
   target => '/etc/sysctl.d/mysysctl.conf',
-}```
+}
+```
 
 ### Setting multiple sysctl keys
 
