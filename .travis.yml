@@ -1,13 +1,23 @@
 rvm:
   - 2.1.0
   - 2.4.0
+  - 2.5.3
 script: 'bundle exec rake'
 env:
   - PUPPET_VERSION=4.10.12
-  - PUPPET_VERSION=5.5.3
+  - PUPPET_VERSION=5.5.8
+  - PUPPET_VERSION=6.0.4
 matrix:
   exclude:
     - rvm: 2.1.0
-      env: PUPPET_VERSION=5.5.3
+      env: PUPPET_VERSION=5.5.8
+    - rvm: 2.5.3
+      env: PUPPET_VERSION=5.5.8
     - rvm: 2.4.0
       env: PUPPET_VERSION=4.10.12
+    - rvm: 2.5.3
+      env: PUPPET_VERSION=4.10.12
+    - rvm: 2.1.0
+      env: PUPPET_VERSION=6.0.4
+    - rvm: 2.4.0
+      env: PUPPET_VERSION=6.0.4
