@@ -35,7 +35,7 @@ Puppet::Type.type(:sysctl_runtime).provide(:sysctl_runtime, :parent => Puppet::P
       if provider = sysctl_flags.find{ |sres| sres.name == res }
         resources[res].provider = provider
       else
-        raise(Puppet::ParseError, "sysctl parameter #{res} wasn't found on this system")
+        Puppet.warning("sysctl parameter #{res} wasn't found on this system")
       end
     end
   end
