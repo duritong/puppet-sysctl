@@ -100,7 +100,7 @@ sysctl::values { 'multiple':
 You can configure hiera data and pass it to the `sysctl::values` resource.
 
 ```
-sysctl::values:
+sysctl::values::args:
   net.ipv4.ip_forward:
     value: 1
   net.ipv6.conf.all.forwarding:
