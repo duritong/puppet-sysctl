@@ -13,9 +13,15 @@
 #
 # @api public
 class sysctl::values(
-  Hash $args,
+  Optional[Hash] $args = undef,
   Hash $defaults = {},
 ) {
 
-  create_resources(sysctl::value, $args, $defaults)
+  if ($args) {
+    $args.each |$name, $value| {
+      sysctl::value { $name:
+        * => $defaults + $value,
+      }
+    }
+  }
 }
